@@ -31,14 +31,14 @@ public class CurrencyTestsWithNegativeBalance extends CommonConditions {
                 .signIn()
                 .changeAccountToDemo();
     }
-/*    @Test(description = "Buy tokens ", priority = 1)
+    @Test(description = "Buy tokens ", priority = 1)
     public void buyTokens() {
         currencyTradeTab = currencyTradingPlatformPage
                 .clickBuyToken(BITCOIN_TOKEN)
                 .enterQuantityOfTokens(BITCOIN_TOKEN)
                 .confirmBuyingOfTokens();
         assertThat(currencyTradeTab.getTextOfPopup()).isEqualTo("Пополнить аккаунт");
-    }*/
+    }
     @Test(description = "Sell tokens ", priority = 2)
     public void sellTokens() {
         currencyTradeTab = currencyTradingPlatformPage
@@ -47,7 +47,7 @@ public class CurrencyTestsWithNegativeBalance extends CommonConditions {
                 .confirmSellingOfTokens();
         assertThat(currencyTradeTab.getTextOfPopup()).isEqualTo("Пополнить аккаунт");
     }
-    /*@Test(description = "Send report to user email on Currency.com", priority = 3)
+    @Test(description = "Send report to user email on Currency.com", priority = 3)
     public void sendReportToUserEmail() {
         mailCurrencyLettersPage = currencyTradingPlatformPage
                 .linkToReportsPage()
@@ -63,5 +63,5 @@ public class CurrencyTestsWithNegativeBalance extends CommonConditions {
                 .showLatestLetterFromCurrency();
 
         assertThat(mailCurrencyLettersPage.getDateOfLastLetterFromCurrency()).isEqualTo("Сегодня, "+ dateFormat +"");
-    }*/
+    }
 }

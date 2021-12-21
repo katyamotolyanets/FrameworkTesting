@@ -31,7 +31,6 @@ public class CurrencyReportsPage extends AbstractPage {
         sendReportButton.click();
         waitForElementToBeClickable(driver, sendReportButton);
         sendReportButtonInPopup.click();
-        String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
         return this;
     }
 

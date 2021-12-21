@@ -22,8 +22,6 @@ public class CurrencyTradingPlatformPage extends AbstractPage {
     private WebElement demoAccountMenuItem;
     @FindBy(xpath = "(//div[contains(@class, 'category-item ng-star-inserted')])[3]")
     private WebElement activelyGrowingMarketsTab;
-    @FindBy(xpath = "(//div[contains(@class, 'category-item ng-star-inserted selected')])[3]")
-    private WebElement activelyGrowingMarketsTabSelected;
     @FindBy(css = "div.trade-categories-header__edit")
     private WebElement editWatchListsButton;
     @FindBy(css = "div.side-nav__item:nth-of-type(4)")
@@ -34,12 +32,7 @@ public class CurrencyTradingPlatformPage extends AbstractPage {
     public WebElement chartingSideNavItem;
     @FindBy(xpath = "//div[contains(text(), 'new')]")
     public WebElement categoryItem;
-    @FindBy(xpath = "//div[text()=' new ' and contains(@class, 'selected')]")
-    public WebElement categoryItemSelected;
-/*    @FindBy(css = "div.popover-notification.popover-notification--middle")
-    public WebElement popover;
-    @FindBy(className = "popover-notification__button-close")
-    public WebElement closePopoverButton;*/
+
     public CurrencyTradingPlatformPage changeAccountToDemo() {
         waitForElementToBeClickable(driver, accountMenu);
         accountMenu.click();
