@@ -51,7 +51,7 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
 
         assertThat(mailCurrencyLettersPage.getDateOfLastLetterFromCurrency()).isEqualTo("Сегодня, "+ dateFormat +"");
     }
-   /* @Test(description = "Sell 10 tokens of Silver on Currency.com", priority = 2)
+    @Test(description = "Sell 10 tokens of Silver on Currency.com", priority = 2)
     public void sellTokensOnCurrency() {
         String textOfNotificationAboutGoodRequest = currencyTradingPlatformPage
                 .clickSellToken(SILVER_SELL_TOKEN)
@@ -120,5 +120,5 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .confirmBuyingOfTokens();
 
         assertThat(currencyTradeTab.haveTokensBeenBought()).isTrue();
-    }*/
+    }
 }
