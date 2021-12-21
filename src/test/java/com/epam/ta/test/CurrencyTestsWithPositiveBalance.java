@@ -21,7 +21,6 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
     private CurrencyTradeTab currencyTradeTab;
     private CurrencyEditWatchListsPage currencyEditWatchListsPage;
     private MailCurrencyLettersPage mailCurrencyLettersPage;
-    String dateFormat = new SimpleDateFormat("HH:mm").format(new Date());
 
     private List<String> ITEMS = Arrays.asList("Bitcoin / USD", "Crude Oil", "Gold", "Silver");
 
@@ -43,12 +42,14 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .sendReportToEmail()
                 .openEmail()
                 .loginEmail()
-                .enterUserData(TEST_NEGATIVE_USER)
+                .enterUserData(TEST_POSITIVE_USER)
                 .signInEmail()
                 .openNavBarOfInbox()
                 .switchToLettersPage()
                 .linkToLettersFromCurrency()
                 .showLatestLetterFromCurrency();
+
+        String dateFormat = new SimpleDateFormat("HH:mm").format(new Date());
 
         assertThat(mailCurrencyLettersPage.getDateOfLastLetterFromCurrency()).isEqualTo("Сегодня, "+ dateFormat +"");
     }
