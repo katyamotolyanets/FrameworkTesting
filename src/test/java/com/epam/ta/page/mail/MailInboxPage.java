@@ -7,21 +7,21 @@ import org.openqa.selenium.support.FindBy;
 
 public class MailInboxPage extends AbstractPage {
     public MailInboxPage(WebDriver driver) {super(driver);}
-    @FindBy(className = "metathread_collapsed")
+    @FindBy(css = "a.js-letter-list-item.llc_normal:nth-of-type(1)")
     public WebElement newLettersItem;
-    @FindBy(css = "a.llc_has-indent:nth-of-type(1)")
-    public WebElement latestLetterFromCurrency;
+    /*@FindBy(css = "a.llc_has-indent:nth-of-type(1)")
+    public WebElement latestLetterFromCurrency;*/
 
 
-    public MailInboxPage openNewLetters() {
+    public MailCurrencyLettersPage openNewLetters() {
         waitForElementToBeClickable(driver, newLettersItem);
         newLettersItem.click();
-        return this;
+        return new MailCurrencyLettersPage(driver);
     }
 
-    public MailCurrencyLettersPage switchToLatestLettersPage() {
+    /*public MailCurrencyLettersPage switchToLatestLettersPage() {
         waitForElementToBeClickable(driver, latestLetterFromCurrency);
         latestLetterFromCurrency.click();
         return new MailCurrencyLettersPage(driver);
-    }
+    }*/
 }
