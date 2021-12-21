@@ -1,8 +1,10 @@
 package com.epam.ta.test;
 
+import com.epam.ta.driver.DriverSingleton;
 import com.epam.ta.page.currency.CurrencyHomePage;
 import com.epam.ta.page.currency.CurrencyTradeTab;
 import com.epam.ta.page.currency.CurrencyTradingPlatformPage;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -37,5 +39,9 @@ public class CurrencyTestsWithNegativeBalance extends CommonConditions {
                 .enterQuantityOfTokens(GOLD_TOKEN)
                 .confirmSellingOfTokens();
         assertThat(currencyTradeTab.getTextOfPopup()).isEqualTo("Пополнить аккаунт");
+    }
+    @AfterMethod(alwaysRun = true)
+    public void stopBrowser() {
+        DriverSingleton.closeDriver();
     }
 }

@@ -1,10 +1,12 @@
 package com.epam.ta.test;
 
+import com.epam.ta.driver.DriverSingleton;
 import com.epam.ta.page.currency.CurrencyEditWatchListsPage;
 import com.epam.ta.page.currency.CurrencyHomePage;
 import com.epam.ta.page.currency.CurrencyTradeTab;
 import com.epam.ta.page.currency.CurrencyTradingPlatformPage;
 import com.epam.ta.page.mail.MailCurrencyLettersPage;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -87,7 +89,7 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
     }
     @Test(description = "Add all tokens from list to charting on Currency.com", priority = 5)
     public void addTokensToCharting() {
-        List<String> list = currencyTradingPlatformPage
+        List<String> watchListItems = currencyTradingPlatformPage
                 .linkToChartingPage()
                 .clickAddAllInListButton()
                 .chooseWatchList()
@@ -96,11 +98,11 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .chooseCategoryItem()
                 .getWatchListItems();
 
-        assertThat(list).isEqualTo(ITEMS);
+        assertThat(watchListItems).isEqualTo(ITEMS);
     }
     @Test(description = "Edit request by addition of take-profit on Currency.con", priority = 6)
     public void editRequestInPortfolio() {
-        String text = currencyTradingPlatformPage
+        String textOfNotificationAboutGoodRequest = currencyTradingPlatformPage
                 .linkToPortfolioPage()
                 .openRequestsTab()
                 .clickButtonToAddTakeProfit()
@@ -109,7 +111,7 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .completeAdditionOfTakeProfit()
                 .getTextOfNotificationAboutGoodRequest();
 
-        assertThat(text).isEqualTo("Заявка изменена.");
+        assertThat(textOfNotificationAboutGoodRequest).isEqualTo("Заявка изменена.");
     }
     @Test(description = "Buy 10 tokens of Bitcoin / USD on Currency.com", priority = 7)
     public void buyTokensOnCurrency() {
@@ -120,5 +122,9 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .confirmBuyingOfTokens();
 
         assertThat(currencyTradeTab.haveTokensBeenBought()).isTrue();
+    }
+    @AfterMethod(alwaysRun = true)
+    public void stopBrowser() {
+        DriverSingleton.closeDriver();
     }
 }
