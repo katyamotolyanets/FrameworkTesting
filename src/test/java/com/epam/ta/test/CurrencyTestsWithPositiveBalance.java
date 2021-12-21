@@ -44,12 +44,11 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .loginEmail()
                 .enterUserData(TEST_POSITIVE_USER)
                 .signInEmail()
-                .openNavBarOfInbox()
-                .switchToLettersPage()
-                .linkToLettersFromCurrency()
+                .openNewLetters()
+                .switchToLatestLettersPage()
                 .showLatestLetterFromCurrency();
 
-        String dateFormat = new SimpleDateFormat("HH:mm").format(new Date());
+        String dateFormat = new SimpleDateFormat("H:mm").format(new Date());
 
         assertThat(mailCurrencyLettersPage.getDateOfLastLetterFromCurrency()).isEqualTo("Сегодня, "+ dateFormat +"");
     }
