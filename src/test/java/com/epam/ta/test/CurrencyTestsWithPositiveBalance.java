@@ -6,12 +6,14 @@ import com.epam.ta.page.currency.CurrencyHomePage;
 import com.epam.ta.page.currency.CurrencyTradeTab;
 import com.epam.ta.page.currency.CurrencyTradingPlatformPage;
 import com.epam.ta.page.mail.MailCurrencyLettersPage;
+import org.apache.commons.lang.time.DateUtils;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +51,9 @@ public class CurrencyTestsWithPositiveBalance extends CommonConditions {
                 .openNewLetters()
                 .showLatestLetterFromCurrency();
 
-        String dateFormat = new SimpleDateFormat("H:mm").format(new Date());
+        Date targetTime = Calendar.getInstance().getTime();
+        targetTime = DateUtils.addMinutes(targetTime, -1);
+        String dateFormat = new SimpleDateFormat("H:mm").format(targetTime);
 
         assertThat(mailCurrencyLettersPage.getDateOfLastLetterFromCurrency()).isEqualTo("Сегодня, "+ dateFormat +"");
     }
